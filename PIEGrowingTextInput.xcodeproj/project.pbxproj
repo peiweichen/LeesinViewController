@@ -26,6 +26,7 @@
 		F4092E481C3AC9F7003A3AD7 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E3B1C3AC9F7003A3AD7 /* NSArray+MASAdditions.m */; };
 		F4092E491C3AC9F7003A3AD7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E3E1C3AC9F7003A3AD7 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		F4092E4A1C3AC9F7003A3AD7 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E401C3AC9F7003A3AD7 /* View+MASAdditions.m */; };
+		F4092E4C1C3ACDC6003A3AD7 /* demo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4092E4B1C3ACDC6003A3AD7 /* demo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		F4092E3F1C3AC9F7003A3AD7 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
 		F4092E401C3AC9F7003A3AD7 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		F4092E411C3AC9F7003A3AD7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		F4092E4B1C3ACDC6003A3AD7 /* demo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				F4092D9B1C3A3C7C003A3AD7 /* Assets.xcassets */,
 				F4092D9D1C3A3C7C003A3AD7 /* LaunchScreen.storyboard */,
 				F4092DA01C3A3C7C003A3AD7 /* Info.plist */,
+				F4092E4B1C3ACDC6003A3AD7 /* demo.jpg */,
 				F4092D8F1C3A3C7C003A3AD7 /* Supporting Files */,
 			);
 			name = PIEGrowingTextInput;
@@ -328,6 +331,7 @@
 				F4092D9F1C3A3C7C003A3AD7 /* LaunchScreen.storyboard in Resources */,
 				F4092D9C1C3A3C7C003A3AD7 /* Assets.xcassets in Resources */,
 				F4092D9A1C3A3C7C003A3AD7 /* Main.storyboard in Resources */,
+				F4092E4C1C3ACDC6003A3AD7 /* demo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
