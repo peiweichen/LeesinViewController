@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4092D8B1C3A3C7C003A3AD7"
-               BuildableName = "newInput.app"
-               BlueprintName = "newInput"
-               ReferencedContainer = "container:newInput.xcodeproj">
+               BuildableName = "PIEGrowingTextInput.app"
+               BlueprintName = "PIEGrowingTextInput"
+               ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4092DA41C3A3C7C003A3AD7"
-               BuildableName = "newInputTests.xctest"
-               BlueprintName = "newInputTests"
-               ReferencedContainer = "container:newInput.xcodeproj">
+               BuildableName = "PIEGrowingTextInput.xctest"
+               BlueprintName = "PIEGrowingTextInputTests"
+               ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4092DAF1C3A3C7C003A3AD7"
-               BuildableName = "newInputUITests.xctest"
-               BlueprintName = "newInputUITests"
-               ReferencedContainer = "container:newInput.xcodeproj">
+               BuildableName = "PIEGrowingTextInput.xctest"
+               BlueprintName = "PIEGrowingTextInputUITests"
+               ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4092D8B1C3A3C7C003A3AD7"
-            BuildableName = "newInput.app"
-            BlueprintName = "newInput"
-            ReferencedContainer = "container:newInput.xcodeproj">
+            BuildableName = "PIEGrowingTextInput.app"
+            BlueprintName = "PIEGrowingTextInput"
+            ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4092D8B1C3A3C7C003A3AD7"
-            BuildableName = "newInput.app"
-            BlueprintName = "newInput"
-            ReferencedContainer = "container:newInput.xcodeproj">
+            BuildableName = "PIEGrowingTextInput.app"
+            BlueprintName = "PIEGrowingTextInput"
+            ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4092D8B1C3A3C7C003A3AD7"
-            BuildableName = "newInput.app"
-            BlueprintName = "newInput"
-            ReferencedContainer = "container:newInput.xcodeproj">
+            BuildableName = "PIEGrowingTextInput.app"
+            BlueprintName = "PIEGrowingTextInput"
+            ReferencedContainer = "container:PIEGrowingTextInput.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:newInput.xcodeproj">
+      location = "self:/Users/peiwei/Desktop/newInput/PIEGrowingTextInput.xcodeproj">
    </FileRef>
 </Workspace>
