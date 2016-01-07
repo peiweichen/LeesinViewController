@@ -6,12 +6,12 @@
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
-#import "LeesinTextInputToolBar.h"
+#import "LeesinTextInputBar.h"
 #import "LeesinTextView.h"
-#import "LeesinToolBar.h"
+#import "LeesinBottomBar.h"
 #import "Masonry.h"
 
-@interface LeesinTextInputToolBar ()
+@interface LeesinTextInputBar ()
 
 @property (nonatomic, strong) MASConstraint *leftButton1WC;
 @property (nonatomic, strong) MASConstraint *leftButton1HC;
@@ -33,7 +33,7 @@
 @end
 
 
-@implementation LeesinTextInputToolBar
+@implementation LeesinTextInputBar
 
 - (instancetype)initWithTextViewClass:(Class)textViewClass
 {
@@ -64,8 +64,9 @@
 
 - (void)pie_commonInit
 {
+    self.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
     self.contentInset = UIEdgeInsetsMake(8.0, 12.0, 8.0, 5.0);
-    self.state = LeesinTextInputBarButtonStateMission;
+    self.buttonType = LeesinTextInputBarButtonTypeMission;
     self.textView.placeholder = @"作品描述";
     [self addSubview:self.leftButton1];
     [self addSubview:self.leftButton2];
@@ -284,12 +285,12 @@
     }
     return _textView;
 }
--(void)setType:(LeesinTextInputToolBarType)type {
+-(void)setType:(LeesinTextInputBarType)type {
     _type = type;
-    if (type == LeesinTextInputToolBarTypeAsk) {
+    if (type == LeesinTextInputBarTypeAsk) {
         [self pie_hideLeftButton1];
         self.textView.placeholder = @"求p描述";
-    } else if (type == LeesinTextInputToolBarTypeReply) {
+    } else if (type == LeesinTextInputBarTypeReply) {
         self.textView.placeholder = @"作品描述";
     }
 }

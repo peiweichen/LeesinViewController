@@ -9,24 +9,24 @@
 #import <UIKit/UIKit.h>
 
 @class LeesinTextView;
-typedef NS_ENUM(NSUInteger, LeesinTextInputBarButtonState) {
-    LeesinTextInputBarButtonStateMission,
-    LeesinTextInputBarButtonStatePhoto
+typedef NS_ENUM(NSUInteger, LeesinTextInputBarButtonType) {
+    LeesinTextInputBarButtonTypeMission,
+    LeesinTextInputBarButtonTypePhoto
 };
-typedef NS_ENUM(NSUInteger, LeesinTextInputToolBarType) {
-    LeesinTextInputToolBarTypeAsk,
-    LeesinTextInputToolBarTypeReply
+typedef NS_ENUM(NSUInteger, LeesinTextInputBarType) {
+    LeesinTextInputBarTypeAsk,
+    LeesinTextInputBarTypeReply
 };
 
-@interface LeesinTextInputToolBar : UIToolbar
+@interface LeesinTextInputBar : UIView
 
 @property (nonatomic, strong) LeesinTextView *textView;
 @property (nonatomic, strong) UIButton *leftButton1;
 @property (nonatomic, strong) UIButton *leftButton2;
 @property (nonatomic, strong) UIButton *rightButton;
-@property (nonatomic, assign) LeesinTextInputToolBarType type;
+@property (nonatomic, assign) LeesinTextInputBarType type;
 
-@property (nonatomic, assign) LeesinTextInputBarButtonState state;
+@property (nonatomic, assign) LeesinTextInputBarButtonType buttonType;
 @property (nonatomic, assign) UIEdgeInsets contentInset;
 
 @property (nonatomic, readonly) CGFloat minimumInputbarHeight;

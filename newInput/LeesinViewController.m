@@ -7,34 +7,38 @@
 //
 
 #import "LeesinViewController.h"
-#import "Masonry.h"
-#import "LeesinTextInputToolBar.h"
-//#import "PIESwipeView.h"
-#import "LeesinToolBar.h"
+
 #import <Photos/Photos.h>
+#import "Masonry.h"
+#import "SwipeView.h"
+#import "LeesinTextInputBar.h"
+#import "LeesinBottomBar.h"
 #import "LeesinAssetCell.h"
 #import "LeesinMissionCell.h"
 #import "PHAsset+Addition.h"
-#import "SwipeView.h"
+#import "LeesinPreviewBar.h"
 typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
     PIESwipeViewResueViewTypeMission,
     PIESwipeViewResueViewTypePhoto,
 };
 @interface LeesinViewController ()
 
-@property (nonatomic, strong) LeesinToolBar *toolBar;
+@property (nonatomic, strong) LeesinBottomBar *toolBar;
+@property (nonatomic, strong) LeesinPreviewBar *previewBar;
+@property (nonatomic, strong) MASConstraint *previewBarMarginBC;
+@property (nonatomic, assign) BOOL photosIsReady;
 
 @end
 
 @interface LeesinViewController ()
-@property (nonatomic, strong) LeesinTextInputToolBar* bar;
+@property (nonatomic, strong) LeesinTextInputBar* bar;
 @property (nonatomic, strong) MASConstraint *inputBarHC;
 @property (nonatomic, strong) MASConstraint *inputbarBottomMarginHC;
 @end
 
 @interface LeesinViewController ()<SwipeViewDataSource,SwipeViewDelegate>
 @property (nonatomic, strong) SwipeView *swipeView;
-@property (nonatomic, assign) BOOL allowMultipleSelection;
+//@property (nonatomic, assign) BOOL allowMultipleSelection;
 @property (nonatomic, strong) NSMutableOrderedSet *sourceMissions;
 @property (nonatomic, strong) NSMutableOrderedSet *sourceAssets;
 @property (nonatomic, strong) NSMutableOrderedSet *selectedAssets;
@@ -85,19 +89,30 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
     [self.view addSubview:self.bar];
     [self.view addSubview:self.swipeView];
     [self.view addSubview:self.toolBar];
+    [self.view addSubview:self.previewBar];
+    [self.view sendSubviewToBack:self.previewBar];
     [self setupViewContraints];
 }
 
 
 - (void)setupTapEvents {
-    [self.bar.leftButton1 addTarget:self action:@selector(textInputBar_TapOnleftButton1:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bar.leftButton2 addTarget:self action:@selector(textInputBar_TapOnleftButton2:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bar.rightButton addTarget:self action:@selector(textInputBar_TapOnRightButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.bar.leftButton1 addTarget:self action:@selector(textInputBar_TapOnleftButton1:) forControlEvents:UIControlEventTouchDown];
+    [self.bar.leftButton2 addTarget:self action:@selector(textInputBar_TapOnleftButton2:) forControlEvents:UIControlEventTouchDown];
+    [self.bar.rightButton addTarget:self action:@selector(textInputBar_TapOnRightButton:) forControlEvents:UIControlEventTouchDown];
     
+    [self.toolBar.button_confirm addTarget:self action:@selector(bottomToolBar_tapOnConfirmButton:) forControlEvents:UIControlEventTouchDown];
     UITapGestureRecognizer* tapGesure1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapOnView:)];
     [self.view addGestureRecognizer:tapGesure1];
 }
 - (void)setupViewContraints {
+    
+    [self.previewBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@38);
+        self.previewBarMarginBC =  make.bottom.equalTo(self.bar.mas_top).with.offset(38);
+        make.leading.equalTo(self.view);
+        make.trailing.equalTo(self.view);
+    }];
+
     [self.bar mas_makeConstraints:^(MASConstraintMaker *make) {
         _inputBarHC  = make.height.equalTo(@(self.bar.appropriateHeight));
         _inputbarBottomMarginHC = make.bottom.equalTo(self.view).with.offset(-230);
@@ -168,26 +183,26 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
     }
 }
 - (void)textInputBar_TapOnleftButton1:(id)sender {
-    if (self.bar.state == LeesinTextInputBarButtonStateMission) {
+    if (self.bar.buttonType == LeesinTextInputBarButtonTypeMission) {
         return;
     }
-    self.bar.state = LeesinTextInputBarButtonStateMission;
-    self.toolBar.type = LeeSinToolBarTypeMission;
+    self.bar.buttonType = LeesinTextInputBarButtonTypeMission;
+    self.toolBar.type = LeeSinBottomBarTypeMission;
     [self.swipeView reloadData];
 }
 
 - (void)textInputBar_TapOnleftButton2:(id)sender {
     
-    if (self.bar.state == LeesinTextInputBarButtonStatePhoto) {
+    if (self.bar.buttonType == LeesinTextInputBarButtonTypePhoto) {
         return;
     }
     
     if (self.type == LeesinViewControllerTypeAsk) {
-        self.toolBar.type = LeeSinToolBarTypeAsk;
+        self.toolBar.type = LeeSinBottomBarTypeAsk;
     } else if (self.type == LeesinViewControllerTypeReply) {
-        self.toolBar.type = LeeSinToolBarTypeReply;
+        self.toolBar.type = LeeSinBottomBarTypeReply;
     }
-    self.bar.state = LeesinTextInputBarButtonStatePhoto;
+    self.bar.buttonType = LeesinTextInputBarButtonTypePhoto;
     
     [self.swipeView reloadData];
 }
@@ -197,29 +212,40 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
     
 }
 
+- (void)bottomToolBar_tapOnConfirmButton:(id)sender {
+    self.photosIsReady = YES;
+    [self.toolBar.button_confirm setTitle:@"取消" forState:UIControlStateNormal];
+    self.toolBar.button_confirm.alpha = 0.5;
+    [self togglePreviewBar];
+}
 
 #pragma mark - Get and Set
 
--(LeesinTextInputToolBar *)bar {
+-(LeesinTextInputBar *)bar {
     if (!_bar) {
-        _bar = [LeesinTextInputToolBar new];
+        _bar = [LeesinTextInputBar new];
     }
     return _bar;
 }
-
+-(LeesinPreviewBar *)previewBar {
+    if (!_previewBar) {
+        _previewBar = [LeesinPreviewBar new];
+    }
+    return _previewBar;
+}
 -(void)setType:(LeesinViewControllerType)type {
     _type = type;
     
     if (type == LeesinViewControllerTypeAsk) {
-        self.bar.type = LeesinTextInputToolBarTypeAsk;
-        self.toolBar.type = LeeSinToolBarTypeAsk;
-        self.bar.state = LeesinTextInputBarButtonStatePhoto;
+        self.bar.type = LeesinTextInputBarTypeAsk;
+        self.toolBar.type = LeeSinBottomBarTypeAsk;
+        self.bar.buttonType = LeesinTextInputBarButtonTypePhoto;
     } else if (type == LeesinViewControllerTypeReply) {
-        self.bar.type = LeesinTextInputToolBarTypeReply;
-        if (self.bar.state == LeesinTextInputBarButtonStateMission) {
-            self.toolBar.type = LeeSinToolBarTypeMission;
-        } else if (self.bar.state == LeesinTextInputBarButtonStatePhoto) {
-            self.toolBar.type = LeeSinToolBarTypeReply;
+        self.bar.type = LeesinTextInputBarTypeReply;
+        if (self.bar.buttonType == LeesinTextInputBarButtonTypeMission) {
+            self.toolBar.type = LeeSinBottomBarTypeMission;
+        } else if (self.bar.buttonType == LeesinTextInputBarButtonTypePhoto) {
+            self.toolBar.type = LeeSinBottomBarTypeReply;
         }
     }
 }
@@ -236,9 +262,9 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
     }
     return _swipeView;
 }
--(LeesinToolBar *)toolBar {
+-(LeesinBottomBar *)toolBar {
     if (!_toolBar) {
-        _toolBar = [LeesinToolBar new];
+        _toolBar = [LeesinBottomBar new];
     }
     return _toolBar;
 }
@@ -303,11 +329,11 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
 
 
 -(NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView {
-    if (self.bar.state == LeesinTextInputBarButtonStateMission) {
+    if (self.bar.buttonType == LeesinTextInputBarButtonTypeMission) {
         _sourceMissions = _sourceAssets;
         return _sourceMissions.count;
     }
-    else if (self.bar.state == LeesinTextInputBarButtonStatePhoto)
+    else if (self.bar.buttonType == LeesinTextInputBarButtonTypePhoto)
     {
         return _sourceAssets.count;
     }
@@ -317,7 +343,7 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
 -(UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
     
     
-    if (self.bar.state == LeesinTextInputBarButtonStatePhoto) {
+    if (self.bar.buttonType == LeesinTextInputBarButtonTypePhoto) {
         CGFloat ratio = 270.0/405.0;
         CGFloat height = swipeView.frame.size.height;
         CGFloat width = height*ratio;
@@ -343,7 +369,7 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
                              resultHandler:^(UIImage *result, NSDictionary *info) {
                                  cell.image = result;
                              }];
-    } else  if (self.bar.state == LeesinTextInputBarButtonStateMission) {
+    } else  if (self.bar.buttonType == LeesinTextInputBarButtonTypeMission) {
         CGFloat ratio = 270.0/405.0;
         CGFloat height = swipeView.frame.size.height;
         CGFloat width = height*ratio;
@@ -376,10 +402,12 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
 
 
 -(void)swipeView:(SwipeView *)swipeView didSelectItemAtIndex:(NSInteger)index {
+    if (_photosIsReady) {
+        return;
+    }
     UIView* view = [swipeView itemViewAtIndex:index];
     
-    if (self.bar.state == LeesinTextInputBarButtonStatePhoto) {
-        
+    if (self.bar.buttonType == LeesinTextInputBarButtonTypePhoto) {
         LeesinAssetCell *cell = [self pie_getSubviewAsClass:[LeesinAssetCell class] fromView:view];;
         PHAsset *currentAsset = [_sourceAssets objectAtIndex:index];
         if (cell.selected) {
@@ -387,13 +415,14 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
             currentAsset.selected = NO;
             [self.selectedAssets removeObject:currentAsset];
         } else {
-            if ((self.selectedAssets.count <= 0) || (self.allowMultipleSelection && self.selectedAssets.count < 2 )) {
+            if ((self.selectedAssets.count <= 0) || (self.type == LeesinViewControllerTypeAsk && self.selectedAssets.count < 2 )) {
                 cell.selected = YES;
                 currentAsset.selected = YES;
+
                 [self.selectedAssets addObject:currentAsset];
             }
         }
-    } else     if (self.bar.state == LeesinTextInputBarButtonStateMission) {
+    } else     if (self.bar.buttonType == LeesinTextInputBarButtonTypeMission) {
         
         LeesinMissionCell *cell = [self pie_getSubviewAsClass:[LeesinMissionCell class] fromView:view];;
         PHAsset *currentAsset = [_sourceMissions objectAtIndex:index];
@@ -408,6 +437,31 @@ typedef NS_ENUM(NSUInteger, PIESwipeViewResueViewType) {
                 _selectedIndexOfMission = index;
             }
         }
+    }
+    
+    [self updateToolBarInfo];
+
+}
+- (void)togglePreviewBar {
+    
+    if (self.previewBar.frame.origin.y >= self.bar.frame.origin.y) {
+        [self.previewBarMarginBC setOffset:0];
+    } else {
+        [self.previewBarMarginBC setOffset:38];
+    }
+    
+    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [self.previewBar layoutIfNeeded];
+    } completion:nil];
+}
+- (void)updateToolBarInfo {
+    if (!self.toolBar.label_confirmedCount.hidden) {
+        self.toolBar.label_confirmedCount.text = [NSString stringWithFormat:@"%zd",self.selectedAssets.count];
+    }
+    
+    if (self.type == LeesinViewControllerTypeAsk) {
+        self.toolBar.button_confirm.enabled = self.selectedAssets.count > 0 ? YES:NO;
+        self.toolBar.button_confirm.alpha   = self.selectedAssets.count > 0 ? 1.0:0.3;
     }
 }
 

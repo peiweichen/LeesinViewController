@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef NS_ENUM(NSUInteger, LeeSinToolBarType) {
-    LeeSinToolBarTypeMission,
-    LeeSinToolBarTypeAsk,
-    LeeSinToolBarTypeReply,
+typedef NS_ENUM(NSUInteger, LeeSinBottomBarType) {
+    LeeSinBottomBarTypeMission,
+    LeeSinBottomBarTypeAsk,
+    LeeSinBottomBarTypeReply,
 };
-@interface LeesinToolBar : UIToolbar
+@interface LeesinBottomBar : UIView
 @property (nonatomic, strong) UIButton *button_album;
 @property (nonatomic, strong) UIButton *button_shoot;
 @property (nonatomic, strong) UIButton *button_confirm;
 @property (nonatomic, strong) UILabel  *label_confirmedCount;
-@property (nonatomic, assign) LeeSinToolBarType type;
+@property (nonatomic, assign) LeeSinBottomBarType type;
 @end

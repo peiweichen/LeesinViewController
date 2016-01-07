@@ -6,9 +6,9 @@
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
-#import "LeesinToolBar.h"
+#import "LeesinBottomBar.h"
 #import "Masonry.h"
-@implementation LeesinToolBar
+@implementation LeesinBottomBar
 
 - (id)init
 {
@@ -29,6 +29,7 @@
 
 - (void)pie_commonInit
 {
+    self.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0];
     [self addSubview:self.button_album];
     [self addSubview:self.button_shoot];
     [self addSubview:self.button_confirm];
@@ -121,6 +122,8 @@
         _button_confirm.titleLabel.font = [UIFont systemFontOfSize:15.0];
         [_button_confirm setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [_button_confirm setTitle:@"确定" forState:UIControlStateNormal];
+        _button_confirm.enabled = NO;
+        _button_confirm.alpha = 0.3;
     }
     return _button_confirm;
 }
@@ -136,17 +139,17 @@
     return _label_confirmedCount;
 }
 
--(void)setType:(LeeSinToolBarType)type {
+-(void)setType:(LeeSinBottomBarType)type {
     _type = type;
-    if (type == LeeSinToolBarTypeReply) {
+    if (type == LeeSinBottomBarTypeReply) {
         [_button_album setTitle:@"相册" forState:UIControlStateNormal];
         _button_shoot.hidden = YES;
         _label_confirmedCount.hidden = YES;
-    } else if (type == LeeSinToolBarTypeMission) {
+    } else if (type == LeeSinBottomBarTypeMission) {
         [_button_album setTitle:@"历史任务" forState:UIControlStateNormal];
         _button_shoot.hidden = YES;
         _label_confirmedCount.hidden = YES;
-    } else if (type == LeeSinToolBarTypeAsk) {
+    } else if (type == LeeSinBottomBarTypeAsk) {
         [_button_album setTitle:@"相册" forState:UIControlStateNormal];
     }
 
