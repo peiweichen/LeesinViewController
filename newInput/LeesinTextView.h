@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PIETextView : UITextView
+@interface LeesinTextView : UITextView
 @property (nonatomic, copy) NSString *placeholder;
 
 @property (nonatomic, copy) UIColor *placeholderColor;

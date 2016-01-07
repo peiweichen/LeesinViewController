@@ -6,20 +6,20 @@
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
-#import "PIETextView.h"
-@interface PIETextView()
+#import "LeesinTextView.h"
+@interface LeesinTextView()
 
 @property (nonatomic, strong) UILabel *placeholderLabel;
 
 @end
 
-@implementation PIETextView
+@implementation LeesinTextView
 #pragma mark - Initialization
 
 - (instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer
 {
     if (self = [super initWithFrame:frame textContainer:textContainer]) {
-        [self slk_commonInit];
+        [self pie_commonInit];
     }
     return self;
 }
@@ -27,15 +27,16 @@
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     if (self = [super initWithCoder:coder]) {
-        [self slk_commonInit];
+        [self pie_commonInit];
     }
     return self;
 }
 
-- (void)slk_commonInit
+- (void)pie_commonInit
 {
     self.dataDetectorTypes = UIDataDetectorTypeNone;
     self.maxNumberOfLines = 10;
+    [self pie_registerNotifications];
 }
 
 
@@ -62,6 +63,7 @@
 
 }
 
+
 - (BOOL)pie_shouldHidePlaceholder
 {
     if (self.placeholder.length == 0 || self.text.length > 0) {
@@ -85,6 +87,16 @@
 }
 
 
+- (void)pie_didChangeText:(NSNotification *)notification
+{
+    if (![notification.object isEqual:self]) {
+        return;
+    }
+    
+    if (self.placeholderLabel.hidden != [self pie_shouldHidePlaceholder]) {
+        [self setNeedsLayout];
+    }
+}
 #pragma mark - Setters
 
 - (void)setPlaceholder:(NSString *)placeholder
@@ -158,5 +170,20 @@
     return numberOfLines;
 }
 
+
+#pragma mark - NSNotificationCenter register/unregister
+
+- (void)pie_registerNotifications
+{
+    [self pie_unregisterNotifications];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pie_didChangeText:) name:UITextViewTextDidChangeNotification object:nil];
+
+}
+
+- (void)pie_unregisterNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+}
 
 @end

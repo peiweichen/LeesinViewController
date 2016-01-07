@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		F4092D911C3A3C7C003A3AD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092D901C3A3C7C003A3AD7 /* main.m */; };
 		F4092D941C3A3C7C003A3AD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092D931C3A3C7C003A3AD7 /* AppDelegate.m */; };
-		F4092D971C3A3C7C003A3AD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092D961C3A3C7C003A3AD7 /* ViewController.m */; };
+		F4092D971C3A3C7C003A3AD7 /* LeesinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092D961C3A3C7C003A3AD7 /* LeesinViewController.m */; };
 		F4092D9A1C3A3C7C003A3AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4092D981C3A3C7C003A3AD7 /* Main.storyboard */; };
 		F4092D9C1C3A3C7C003A3AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4092D9B1C3A3C7C003A3AD7 /* Assets.xcassets */; };
 		F4092D9F1C3A3C7C003A3AD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4092D9D1C3A3C7C003A3AD7 /* LaunchScreen.storyboard */; };
 		F4092DAA1C3A3C7C003A3AD7 /* newInputTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092DA91C3A3C7C003A3AD7 /* newInputTests.m */; };
 		F4092DB51C3A3C7C003A3AD7 /* newInputUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092DB41C3A3C7C003A3AD7 /* newInputUITests.m */; };
-		F4092E261C3A5FC8003A3AD7 /* PIETextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E251C3A5FC8003A3AD7 /* PIETextView.m */; };
-		F4092E291C3A5FDB003A3AD7 /* PIETextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E281C3A5FDB003A3AD7 /* PIETextInputbar.m */; };
+		F4092E261C3A5FC8003A3AD7 /* LeesinTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E251C3A5FC8003A3AD7 /* LeesinTextView.m */; };
+		F4092E291C3A5FDB003A3AD7 /* LeesinTextInputToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E281C3A5FDB003A3AD7 /* LeesinTextInputToolBar.m */; };
 		F4092E421C3AC9F7003A3AD7 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E2C1C3AC9F7003A3AD7 /* MASCompositeConstraint.m */; };
 		F4092E431C3AC9F7003A3AD7 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E2F1C3AC9F7003A3AD7 /* MASConstraint.m */; };
 		F4092E441C3AC9F7003A3AD7 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E311C3AC9F7003A3AD7 /* MASConstraintMaker.m */; };
@@ -27,6 +27,15 @@
 		F4092E491C3AC9F7003A3AD7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E3E1C3AC9F7003A3AD7 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		F4092E4A1C3AC9F7003A3AD7 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E401C3AC9F7003A3AD7 /* View+MASAdditions.m */; };
 		F4092E4C1C3ACDC6003A3AD7 /* demo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4092E4B1C3ACDC6003A3AD7 /* demo.jpg */; };
+		F4092E501C3B3CFE003A3AD7 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E4F1C3B3CFE003A3AD7 /* SwipeView.m */; };
+		F4092E531C3B4160003A3AD7 /* LeesinToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E521C3B4160003A3AD7 /* LeesinToolBar.m */; };
+		F4092E591C3B6991003A3AD7 /* LeesinAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E581C3B6991003A3AD7 /* LeesinAssetCell.m */; };
+		F4092E5C1C3B6ABC003A3AD7 /* LeesinCheckmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E5B1C3B6ABC003A3AD7 /* LeesinCheckmarkView.m */; };
+		F4092E621C3BE9CA003A3AD7 /* PHAsset+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E611C3BE9CA003A3AD7 /* PHAsset+Addition.m */; };
+		F4092E651C3C9E56003A3AD7 /* LeesinMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E641C3C9E56003A3AD7 /* LeesinMissionCell.m */; };
+		F4092E691C3C9EB6003A3AD7 /* PIECustomViewFromXib.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E681C3C9EB6003A3AD7 /* PIECustomViewFromXib.m */; };
+		F4092E6B1C3C9ECA003A3AD7 /* LeesinMissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4092E6A1C3C9ECA003A3AD7 /* LeesinMissionCell.xib */; };
+		F4092E6F1C3E163C003A3AD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4092E6D1C3E163C003A3AD7 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +60,8 @@
 		F4092D901C3A3C7C003A3AD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4092D921C3A3C7C003A3AD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F4092D931C3A3C7C003A3AD7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F4092D951C3A3C7C003A3AD7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F4092D961C3A3C7C003A3AD7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F4092D951C3A3C7C003A3AD7 /* LeesinViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeesinViewController.h; sourceTree = "<group>"; };
+		F4092D961C3A3C7C003A3AD7 /* LeesinViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeesinViewController.m; sourceTree = "<group>"; };
 		F4092D991C3A3C7C003A3AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4092D9B1C3A3C7C003A3AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4092D9E1C3A3C7C003A3AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,10 +72,10 @@
 		F4092DB01C3A3C7C003A3AD7 /* PIEGrowingTextInput.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PIEGrowingTextInput.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4092DB41C3A3C7C003A3AD7 /* newInputUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = newInputUITests.m; sourceTree = "<group>"; };
 		F4092DB61C3A3C7C003A3AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4092E241C3A5FC8003A3AD7 /* PIETextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIETextView.h; sourceTree = "<group>"; };
-		F4092E251C3A5FC8003A3AD7 /* PIETextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIETextView.m; sourceTree = "<group>"; };
-		F4092E271C3A5FDB003A3AD7 /* PIETextInputbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIETextInputbar.h; sourceTree = "<group>"; };
-		F4092E281C3A5FDB003A3AD7 /* PIETextInputbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIETextInputbar.m; sourceTree = "<group>"; };
+		F4092E241C3A5FC8003A3AD7 /* LeesinTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinTextView.h; sourceTree = "<group>"; };
+		F4092E251C3A5FC8003A3AD7 /* LeesinTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinTextView.m; sourceTree = "<group>"; };
+		F4092E271C3A5FDB003A3AD7 /* LeesinTextInputToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinTextInputToolBar.h; sourceTree = "<group>"; };
+		F4092E281C3A5FDB003A3AD7 /* LeesinTextInputToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinTextInputToolBar.m; sourceTree = "<group>"; };
 		F4092E2B1C3AC9F7003A3AD7 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		F4092E2C1C3AC9F7003A3AD7 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		F4092E2D1C3AC9F7003A3AD7 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -91,6 +100,23 @@
 		F4092E401C3AC9F7003A3AD7 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		F4092E411C3AC9F7003A3AD7 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		F4092E4B1C3ACDC6003A3AD7 /* demo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo.jpg; sourceTree = "<group>"; };
+		F4092E4E1C3B3CFE003A3AD7 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		F4092E4F1C3B3CFE003A3AD7 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		F4092E511C3B4160003A3AD7 /* LeesinToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinToolBar.h; sourceTree = "<group>"; };
+		F4092E521C3B4160003A3AD7 /* LeesinToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinToolBar.m; sourceTree = "<group>"; };
+		F4092E571C3B6991003A3AD7 /* LeesinAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinAssetCell.h; sourceTree = "<group>"; };
+		F4092E581C3B6991003A3AD7 /* LeesinAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinAssetCell.m; sourceTree = "<group>"; };
+		F4092E5A1C3B6ABC003A3AD7 /* LeesinCheckmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinCheckmarkView.h; sourceTree = "<group>"; };
+		F4092E5B1C3B6ABC003A3AD7 /* LeesinCheckmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinCheckmarkView.m; sourceTree = "<group>"; };
+		F4092E601C3BE9CA003A3AD7 /* PHAsset+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PHAsset+Addition.h"; sourceTree = "<group>"; };
+		F4092E611C3BE9CA003A3AD7 /* PHAsset+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PHAsset+Addition.m"; sourceTree = "<group>"; };
+		F4092E631C3C9E56003A3AD7 /* LeesinMissionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeesinMissionCell.h; sourceTree = "<group>"; };
+		F4092E641C3C9E56003A3AD7 /* LeesinMissionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeesinMissionCell.m; sourceTree = "<group>"; };
+		F4092E671C3C9EB6003A3AD7 /* PIECustomViewFromXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIECustomViewFromXib.h; sourceTree = "<group>"; };
+		F4092E681C3C9EB6003A3AD7 /* PIECustomViewFromXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIECustomViewFromXib.m; sourceTree = "<group>"; };
+		F4092E6A1C3C9ECA003A3AD7 /* LeesinMissionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeesinMissionCell.xib; sourceTree = "<group>"; };
+		F4092E6C1C3E163B003A3AD7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F4092E6D1C3E163C003A3AD7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,12 +167,14 @@
 		F4092D8E1C3A3C7C003A3AD7 /* PIEGrowingTextInput */ = {
 			isa = PBXGroup;
 			children = (
+				F4092E661C3C9EAD003A3AD7 /* CustomXib */,
+				F4092E4D1C3B3CFE003A3AD7 /* SwipeView */,
 				F4092E2A1C3AC9F7003A3AD7 /* Masonry */,
-				F4092E231C3A5FA5003A3AD7 /* Source */,
+				F4092E231C3A5FA5003A3AD7 /* Leesin */,
 				F4092D921C3A3C7C003A3AD7 /* AppDelegate.h */,
 				F4092D931C3A3C7C003A3AD7 /* AppDelegate.m */,
-				F4092D951C3A3C7C003A3AD7 /* ViewController.h */,
-				F4092D961C3A3C7C003A3AD7 /* ViewController.m */,
+				F4092E6C1C3E163B003A3AD7 /* ViewController.h */,
+				F4092E6D1C3E163C003A3AD7 /* ViewController.m */,
 				F4092D981C3A3C7C003A3AD7 /* Main.storyboard */,
 				F4092D9B1C3A3C7C003A3AD7 /* Assets.xcassets */,
 				F4092D9D1C3A3C7C003A3AD7 /* LaunchScreen.storyboard */,
@@ -184,15 +212,28 @@
 			path = newInputUITests;
 			sourceTree = "<group>";
 		};
-		F4092E231C3A5FA5003A3AD7 /* Source */ = {
+		F4092E231C3A5FA5003A3AD7 /* Leesin */ = {
 			isa = PBXGroup;
 			children = (
-				F4092E241C3A5FC8003A3AD7 /* PIETextView.h */,
-				F4092E251C3A5FC8003A3AD7 /* PIETextView.m */,
-				F4092E271C3A5FDB003A3AD7 /* PIETextInputbar.h */,
-				F4092E281C3A5FDB003A3AD7 /* PIETextInputbar.m */,
+				F4092D951C3A3C7C003A3AD7 /* LeesinViewController.h */,
+				F4092D961C3A3C7C003A3AD7 /* LeesinViewController.m */,
+				F4092E271C3A5FDB003A3AD7 /* LeesinTextInputToolBar.h */,
+				F4092E281C3A5FDB003A3AD7 /* LeesinTextInputToolBar.m */,
+				F4092E511C3B4160003A3AD7 /* LeesinToolBar.h */,
+				F4092E521C3B4160003A3AD7 /* LeesinToolBar.m */,
+				F4092E241C3A5FC8003A3AD7 /* LeesinTextView.h */,
+				F4092E251C3A5FC8003A3AD7 /* LeesinTextView.m */,
+				F4092E631C3C9E56003A3AD7 /* LeesinMissionCell.h */,
+				F4092E641C3C9E56003A3AD7 /* LeesinMissionCell.m */,
+				F4092E6A1C3C9ECA003A3AD7 /* LeesinMissionCell.xib */,
+				F4092E571C3B6991003A3AD7 /* LeesinAssetCell.h */,
+				F4092E581C3B6991003A3AD7 /* LeesinAssetCell.m */,
+				F4092E5A1C3B6ABC003A3AD7 /* LeesinCheckmarkView.h */,
+				F4092E5B1C3B6ABC003A3AD7 /* LeesinCheckmarkView.m */,
+				F4092E601C3BE9CA003A3AD7 /* PHAsset+Addition.h */,
+				F4092E611C3BE9CA003A3AD7 /* PHAsset+Addition.m */,
 			);
-			name = Source;
+			name = Leesin;
 			sourceTree = "<group>";
 		};
 		F4092E2A1C3AC9F7003A3AD7 /* Masonry */ = {
@@ -223,6 +264,24 @@
 				F4092E411C3AC9F7003A3AD7 /* View+MASShorthandAdditions.h */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		F4092E4D1C3B3CFE003A3AD7 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				F4092E4E1C3B3CFE003A3AD7 /* SwipeView.h */,
+				F4092E4F1C3B3CFE003A3AD7 /* SwipeView.m */,
+			);
+			path = SwipeView;
+			sourceTree = "<group>";
+		};
+		F4092E661C3C9EAD003A3AD7 /* CustomXib */ = {
+			isa = PBXGroup;
+			children = (
+				F4092E671C3C9EB6003A3AD7 /* PIECustomViewFromXib.h */,
+				F4092E681C3C9EB6003A3AD7 /* PIECustomViewFromXib.m */,
+			);
+			name = CustomXib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4092D9F1C3A3C7C003A3AD7 /* LaunchScreen.storyboard in Resources */,
+				F4092E6B1C3C9ECA003A3AD7 /* LeesinMissionCell.xib in Resources */,
 				F4092D9C1C3A3C7C003A3AD7 /* Assets.xcassets in Resources */,
 				F4092D9A1C3A3C7C003A3AD7 /* Main.storyboard in Resources */,
 				F4092E4C1C3ACDC6003A3AD7 /* demo.jpg in Resources */,
@@ -357,17 +417,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4092E431C3AC9F7003A3AD7 /* MASConstraint.m in Sources */,
-				F4092E291C3A5FDB003A3AD7 /* PIETextInputbar.m in Sources */,
-				F4092D971C3A3C7C003A3AD7 /* ViewController.m in Sources */,
+				F4092E531C3B4160003A3AD7 /* LeesinToolBar.m in Sources */,
+				F4092E291C3A5FDB003A3AD7 /* LeesinTextInputToolBar.m in Sources */,
+				F4092E691C3C9EB6003A3AD7 /* PIECustomViewFromXib.m in Sources */,
+				F4092D971C3A3C7C003A3AD7 /* LeesinViewController.m in Sources */,
+				F4092E5C1C3B6ABC003A3AD7 /* LeesinCheckmarkView.m in Sources */,
 				F4092E421C3AC9F7003A3AD7 /* MASCompositeConstraint.m in Sources */,
 				F4092D941C3A3C7C003A3AD7 /* AppDelegate.m in Sources */,
 				F4092E441C3AC9F7003A3AD7 /* MASConstraintMaker.m in Sources */,
+				F4092E591C3B6991003A3AD7 /* LeesinAssetCell.m in Sources */,
 				F4092E4A1C3AC9F7003A3AD7 /* View+MASAdditions.m in Sources */,
-				F4092E261C3A5FC8003A3AD7 /* PIETextView.m in Sources */,
+				F4092E651C3C9E56003A3AD7 /* LeesinMissionCell.m in Sources */,
+				F4092E261C3A5FC8003A3AD7 /* LeesinTextView.m in Sources */,
 				F4092E461C3AC9F7003A3AD7 /* MASViewAttribute.m in Sources */,
+				F4092E501C3B3CFE003A3AD7 /* SwipeView.m in Sources */,
 				F4092E491C3AC9F7003A3AD7 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				F4092D911C3A3C7C003A3AD7 /* main.m in Sources */,
+				F4092E621C3BE9CA003A3AD7 /* PHAsset+Addition.m in Sources */,
 				F4092E481C3AC9F7003A3AD7 /* NSArray+MASAdditions.m in Sources */,
+				F4092E6F1C3E163C003A3AD7 /* ViewController.m in Sources */,
 				F4092E471C3AC9F7003A3AD7 /* MASViewConstraint.m in Sources */,
 				F4092E451C3AC9F7003A3AD7 /* MASLayoutConstraint.m in Sources */,
 			);

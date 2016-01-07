@@ -1,21 +1,14 @@
 //
 //  ViewController.m
-//  newInput
+//  PIEGrowingTextInput
 //
-//  Created by chenpeiwei on 1/4/16.
+//  Created by chenpeiwei on 1/7/16.
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "Masonry.h"
-#import "PIETextInputbar.h"
-
+#import "LeesinViewController.h"
 @interface ViewController ()
-
-@property (nonatomic, strong) MASConstraint *masInputbarHeght;
-@property (nonatomic, strong) MASConstraint *masInputbarBottom;
-
-@property (nonatomic, strong) PIETextInputbar* bar;
 
 @end
 
@@ -23,61 +16,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
     
-    
-    _bar = [PIETextInputbar new];
-    [self.view addSubview:_bar];
-    [_bar mas_makeConstraints:^(MASConstraintMaker *make) {
-        _masInputbarHeght  = make.height.equalTo(@(_bar.appropriateHeight));
-        _masInputbarBottom = make.bottom.equalTo(self.view);
-        make.leading.equalTo(self.view).with.offset(0);
-        make.trailing.equalTo(self.view);
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tupai_didChangeTextViewText:) name:UITextViewTextDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pie_willShowOrHideKeyboard:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pie_willShowOrHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pie_didShowOrHideKeyboard:) name:UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pie_didShowOrHideKeyboard:) name:UIKeyboardDidHideNotification object:nil];
+    UIButton* BUTTON1 = [UIButton new];
+    [BUTTON1 setTitle:@"求p" forState:UIControlStateNormal];
+    [BUTTON1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    UIButton* BUTTON2 = [UIButton new];
+    [BUTTON2 setTitle:@"作品" forState:UIControlStateNormal];
+    [BUTTON2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
+    BUTTON1.frame = CGRectMake(20, 100, 100, 40);
+    BUTTON2.frame = CGRectMake(20, 200, 100, 40);
+    [self.view addSubview:BUTTON1];
+    [self.view addSubview:BUTTON2];
+    
+    [BUTTON1 addTarget:self action:@selector(tap1) forControlEvents:UIControlEventTouchUpInside];
+    [BUTTON2 addTarget:self action:@selector(tap2) forControlEvents:UIControlEventTouchUpInside];
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+ 
 }
 
-- (void)tupai_didChangeTextViewText:(id)sender {
-
-    if (![[sender object] isEqual: _bar.textView]) {
-        return;
-    }
-    if (_bar.frame.size.height != _bar.appropriateHeight) {
-        [_masInputbarHeght setOffset:_bar.appropriateHeight];
-    }
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self tap1];
+    });
+}
+- (void)tap1 {
+    LeesinViewController* vc = [LeesinViewController new];
+    vc.type = LeesinViewControllerTypeAsk;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (void) pie_willShowOrHideKeyboard:(NSNotification*)notification {
-    [_masInputbarBottom setOffset:-[self pie_appropriateKeyboardHeightFromNotification:notification]];
+- (void)tap2 {
+    LeesinViewController* vc = [LeesinViewController new];
+    vc.type = LeesinViewControllerTypeReply;
+
+    [self presentViewController:vc animated:YES completion:nil];
 }
-- (void) pie_didShowOrHideKeyboard:(NSNotification*)notification {
-    
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-
-- (CGFloat)pie_appropriateKeyboardHeightFromNotification:(NSNotification *)notification
-{
-    
-    CGRect keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
-    return [self pie_appropriateKeyboardHeightFromRect:keyboardRect];
-}
-- (CGFloat)pie_appropriateKeyboardHeightFromRect:(CGRect)rect
-{
-    CGRect keyboardRect = [self.view convertRect:rect fromView:nil];
-    
-    CGFloat viewHeight = CGRectGetHeight(self.view.bounds);
-    CGFloat keyboardMinY = CGRectGetMinY(keyboardRect);
-    
-    CGFloat keyboardHeight = MAX(0.0, viewHeight - keyboardMinY);
-    
-    return keyboardHeight;
-}
 
 
 @end

@@ -1,8 +1,8 @@
 //
 //  ViewController.h
-//  newInput
+//  PIEGrowingTextInput
 //
-//  Created by chenpeiwei on 1/4/16.
+//  Created by chenpeiwei on 1/7/16.
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
@@ -10,6 +10,4 @@
 
 @interface ViewController : UIViewController
 
-
 @end
-

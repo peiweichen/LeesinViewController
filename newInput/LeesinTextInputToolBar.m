@@ -6,11 +6,12 @@
 //  Copyright © 2016 chenpeiwei. All rights reserved.
 //
 
-#import "PIETextInputbar.h"
-#import "PIETextView.h"
+#import "LeesinTextInputToolBar.h"
+#import "LeesinTextView.h"
+#import "LeesinToolBar.h"
 #import "Masonry.h"
 
-@interface PIETextInputbar ()
+@interface LeesinTextInputToolBar ()
 
 @property (nonatomic, strong) MASConstraint *leftButton1WC;
 @property (nonatomic, strong) MASConstraint *leftButton1HC;
@@ -32,7 +33,7 @@
 @end
 
 
-@implementation PIETextInputbar
+@implementation LeesinTextInputToolBar
 
 - (instancetype)initWithTextViewClass:(Class)textViewClass
 {
@@ -60,24 +61,30 @@
 }
 
 
+
 - (void)pie_commonInit
 {
-
-    self.contentInset = UIEdgeInsetsMake(5.0, 8.0, 5.0, 8.0);
+    self.contentInset = UIEdgeInsetsMake(8.0, 12.0, 8.0, 5.0);
+    self.state = LeesinTextInputBarButtonStateMission;
+    self.textView.placeholder = @"作品描述";
     [self addSubview:self.leftButton1];
     [self addSubview:self.leftButton2];
     [self addSubview:self.rightButton];
     [self addSubview:self.textView];
-    
     [self pie_setupViewConstraints];
     [self pie_updateConstraintConstants];
-    
+    [self pie_setupActions];
+
 }
 
+
+- (void)pie_setupActions {
+    [self.leftButton2 addTarget:self action:@selector(tapLeftButton2:) forControlEvents:UIControlEventTouchUpInside];
+}
 - (void)pie_setupViewConstraints {
     
     [self.leftButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        self.leftButton1WC = make.width.equalTo(@0).with.priorityHigh();
+        self.leftButton1WC = make.width.equalTo(@0).with.priorityLow();
         self.leftButton1HC = make.height.equalTo(@0).with.priorityHigh();
         self.leftButton1MarginWC = make.leading.equalTo(self).with.priorityHigh();
         self.leftButton1bottomMarginWC = make.bottom.equalTo(self).with.priorityHigh();
@@ -98,19 +105,19 @@
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).with.offset(self.contentInset.top);
-        make.bottom.equalTo(self).with.offset(-self.contentInset.bottom);
-        make.leading.equalTo(self.leftButton2.mas_trailing).with.offset(5);
-        make.trailing.equalTo(self.rightButton.mas_leading);
+        make.bottom.equalTo(self).with.offset(-self.contentInset.bottom).with.priorityHigh();
+        make.leading.equalTo(self.leftButton2.mas_trailing).with.offset(13);
+        make.trailing.equalTo(self.rightButton.mas_leading).with.offset(-10);
     }];
 
 }
 
 - (void) pie_updateConstraintConstants {
-
+    
     CGSize leftButton1Size = [self.leftButton1 imageForState:self.leftButton1.state].size;
     CGSize leftButton2Size = [self.leftButton2 imageForState:self.leftButton2.state].size;
     if (leftButton1Size.width > 0) {
-        [self.leftButton1HC setOffset: leftButton1Size.height];
+        [self.leftButton1HC setOffset: leftButton1Size.height ];
         [self.leftButton1bottomMarginWC setOffset: - roundf((self.intrinsicContentSize.height - leftButton1Size.height) / 2.0)];
     }
     [self.leftButton1WC setOffset: leftButton1Size.width];
@@ -121,7 +128,7 @@
         [self.leftButton2bottomMarginWC setOffset: - roundf((self.intrinsicContentSize.height - leftButton2Size.height) / 2.0)];
     }
     [self.leftButton2WC setOffset: roundf(leftButton2Size.width)];
-    [self.leftButton2MarginWC setOffset: (leftButton2Size.width > 0) ? self.contentInset.left : 0.0];
+    [self.leftButton2MarginWC setOffset: (leftButton2Size.width > 0) ? 18 : 0.0];
     
     [self.rightButtonWC setOffset: [self pie_appropriateRightButtonWidth]];
     [self.rightButtonMarginWC setOffset:-[self pie_appropriateRightButtonMargin]];
@@ -132,9 +139,16 @@
     
     CGFloat rightVerticalMargin = (self.intrinsicContentSize.height - CGRectGetHeight(self.rightButton.frame)) / 2.0;
     [self.rightButtonBottomMarginWC setOffset: - rightVerticalMargin ];
-    
+
 }
 
+- (void)pie_hideLeftButton1 {
+    [self.leftButton1MarginWC setOffset:0];
+    [self.leftButton1WC setOffset:0];
+    [self.leftButton1bottomMarginWC setOffset:0];
+    [self.leftButton1HC setOffset:0];
+    [self.leftButton2MarginWC setOffset:0];
+}
 
 - (CGSize)intrinsicContentSize
 {
@@ -214,12 +228,21 @@
     return height;
 }
 
+
+- (void) tapLeftButton2:(id)sender {
+    if ([self.textView isFirstResponder]) {
+        [self.textView resignFirstResponder];
+    }
+}
+
+
 -(UIButton *)leftButton1 {
     if (!_leftButton1) {
         _leftButton1 = [UIButton buttonWithType:UIButtonTypeSystem];
         _leftButton1.titleLabel.font = [UIFont systemFontOfSize:15.0];
-        _leftButton1.backgroundColor = [UIColor clearColor];
-        [_leftButton1 setImage:[[UIImage imageNamed:@"leftbutton1"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+//        _leftButton1.backgroundColor = [UIColor lightGrayColor];
+//        _leftButton1.backgroundColor = [UIColor clearColor];
+        [_leftButton1 setImage:[[UIImage imageNamed:@"leftbutton1"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]  forState:UIControlStateNormal];
     }
     return _leftButton1;
 }
@@ -227,7 +250,7 @@
     if (!_leftButton2) {
         _leftButton2 = [UIButton buttonWithType:UIButtonTypeSystem];
         _leftButton2.titleLabel.font = [UIFont systemFontOfSize:15.0];
-        _leftButton2.backgroundColor = [UIColor clearColor];
+//        _leftButton2.backgroundColor = [UIColor lightGrayColor];
         [_leftButton2 setImage:[[UIImage imageNamed:@"leftbutton2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
     }
     return _leftButton2;
@@ -242,10 +265,10 @@
     return _rightButton;
 }
 
-- (PIETextView *)textView
+- (LeesinTextView *)textView
 {
     if (!_textView) {
-        Class class = self.textViewClass ? : [PIETextView class];
+        Class class = self.textViewClass ? : [LeesinTextView class];
         
         _textView = [[class alloc] init];
         _textView.font = [UIFont systemFontOfSize:15.0];
@@ -255,10 +278,20 @@
         _textView.enablesReturnKeyAutomatically = YES;
         _textView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, -1.0, 0.0, 1.0);
         _textView.textContainerInset = UIEdgeInsetsMake(8.0, 4.0, 8.0, 0.0);
-        _textView.layer.cornerRadius = 5.0;
-        _textView.layer.borderWidth = 0.5;
+//        _textView.layer.cornerRadius = 5.0;
+//        _textView.layer.borderWidth = 0.5;
         _textView.layer.borderColor =  [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:205.0/255.0 alpha:1.0].CGColor;
     }
     return _textView;
 }
+-(void)setType:(LeesinTextInputToolBarType)type {
+    _type = type;
+    if (type == LeesinTextInputToolBarTypeAsk) {
+        [self pie_hideLeftButton1];
+        self.textView.placeholder = @"求p描述";
+    } else if (type == LeesinTextInputToolBarTypeReply) {
+        self.textView.placeholder = @"作品描述";
+    }
+}
+
 @end
